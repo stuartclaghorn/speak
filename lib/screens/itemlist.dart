@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:speak/utils/dbhelper.dart';
 import 'package:speak/models/item.dart';
 import 'package:speak/screens/itemdetail.dart';
+import 'package:speak/components/rounded_button.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'dart:async';
 import 'dart:io';
@@ -119,25 +120,12 @@ class ItemListState extends State<ItemList> {
           color: Colors.white,
           elevation: 5.0,
           borderOnForeground: true,
-          child: ListTile(
-//            leading: CircleAvatar(
-//              backgroundColor: getColor(this.items[position].type),
-//              child: Text(this.items[position].type.toString()),
-//            ),
-            title: Text(
-              this.items[position].title,
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            // subtitle: Text(this.items[position].date),
-            onTap: () {
-              // debugPrint("Tapped on ${this.todos[position].id.toString()}");
-              // navigateToDetail(this.todos[position]);
-              speak(this.items[position].title);
-            },
-          ),
+          child: RoundedButton(
+              title: items[position].title,
+              color: Colors.grey,
+              onPressed: () {
+                speak(items[position].title);
+              }),
         );
       },
     );
